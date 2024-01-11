@@ -4,15 +4,98 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-    <title>Example Student's HCDE 439 Physical Computing Page!</title>
+    <title>Sehe Choi's HCDE 439 Physical Computing Page!</title>
 
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Example Student's Assignment 1!</h1>
-    <div class="header">
-      <img src="red-panda.jpg" />
-      <p>Here is all the documentation for assignment 1!</p>
+    <h1>Sehe Choi's Assignment 1: Blink!</h1>
+    <h2>Schematic</h2>
+    <div class="document">
+      <img src="A1-Schematic.jpg" />
+      <p>
+        The circuit schematic shows three 220Ω resistors (R1, R2, and R3) connected to three red LED
+        lights (LED 1, LED 2, and LED 3) and digital pins 8, 12, and 13 on an Arduino Uno. To the
+        right of the schematic are the calculations for resistance, given 5V of power and a desired
+        current of 20mA or less. We assume that there is a voltage drop of 1.8V across a single red
+        LED. The calculations showed that a resistance of 160Ω or greater for each LED would be
+        appropriate for the circuit.
+      </p>
+    </div>
+
+    <h2>Circuit</h2>
+    <div class="document">
+      <p>
+        The circuit utilizes three digital pins to ensure that each resistor/LED pair gets 5V of
+        power and is able to operate independently. All components are connected to ground using the
+        negative rail of the breadboard.
+      </p>
+      <img src="A1-Circuit.HEIC" />
+    </div>
+
+    <h2>Firmware</h2>
+    <div class="document">
+      <pre>
+        <code>
+          // the setup function
+          void setup() {
+            // initialize digital pin 8 as an output.
+            pinMode(8, OUTPUT);
+            // initialize digital pin 12 as an output.
+            pinMode(12, OUTPUT);
+            // initialize digital pin 13 as an output.
+            pinMode(13, OUTPUT);
+          }
+
+          // the loop function
+          void loop() {
+            digitalWrite(8, HIGH);  // turn the LED on by making the voltage of digital pin 8 HIGH (5V)
+            delay(1000);                      // wait for a second
+            digitalWrite(8, LOW);   // turn the LED off by making the voltage LOW (0V)
+            delay(1000);                      // wait for a second
+
+            digitalWrite(12, HIGH);  // turn the LED on by making the voltage of digital pin 12 HIGH
+            delay(1000);                      // wait for a second
+            digitalWrite(12, LOW);   // turn the LED off by making the voltage LOW
+            delay(1000);                      // wait for a second
+
+            digitalWrite(13, HIGH);  // turn the LED on by making the voltage of digital pin 13 HIGH
+            delay(1000);                      // wait for a second
+            digitalWrite(13, LOW);   // turn the LED off by making the voltage LOW
+            delay(1000);                      // wait for a second
+          }
+        </code>
+      </pre>
+    </div>
+
+    <h2>Operation</h2>
+    <div class="document">
+      <img src="A1-GIF.GIF" />
+      <p>
+        The LEDs are programmed to blink one at a time, but the code could be altered to make them
+        blink in a different order or speed. For example, the code in the firmware section delays
+        blinking by 1000ms, but in the GIF, there is only a 100ms delay.
+      </p>
+    </div>
+
+    <h2>Additional Questions</h2>
+    <div class="questions">
+      <p>
+        1. As represented in the following graph, the voltage across one LED holds at 1.8V for one
+        second before dropping to 0V for one second, and then the cycle repeats for the next LED in
+        the circuit.
+      </p>
+      <img src="A1-Q1.jpg" />
+      <p>
+        2. The Arduino Uno has 14 digital pins. To blink LEDs independently, each LED would typically
+        require one pin, so in theory, the Arduino could blink up to 14. However, that depends on
+        whether or not it could handle the sum of currents drawn from each resistor/LED pair. For this
+        assignment, the sum of currents could be up to 280mA, equal to 20mA times 14.
+      </p>
+      <p>
+        3. Based on visual observation, a range of 10-12ms is where the LEDs appear to no longer be
+        blinking.
+      </p>
     </div>
   </body>
 </html>
