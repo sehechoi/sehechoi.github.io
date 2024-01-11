@@ -14,12 +14,12 @@
     <div class="document">
       <img src="A1-Schematic.jpg" />
       <p>
-        The circuit schematic shows three 220Ω resistors (R1, R2, and R3) connected to three red LED
-        lights (LED 1, LED 2, and LED 3) and digital pins 8, 12, and 13 on an Arduino Uno. To the
-        right of the schematic are the calculations for resistance, given 5V of power and a desired
-        current of 20mA or less. We assume that there is a voltage drop of 1.8V across a single red
-        LED. The calculations showed that a resistance of 160Ω or greater for each LED would be
-        appropriate for the circuit.
+        The circuit schematic shows three pairs of 220Ω resistors and red LED lights connected to
+        digital pins 8, 12, and 13 on an Arduino Uno. To the right of the schematic are the
+        calculations used to find the necessary resistance, given 5V of power and a desired current
+        of 20mA or less. We assume that there is a voltage drop of 1.8V across a single LED, so a
+        resistance of 160Ω or greater would be approriate. 220Ω resistors were selected only because
+        they were the most readily available.
       </p>
     </div>
 
@@ -89,8 +89,8 @@
       <p>
         2. The Arduino Uno has 14 digital pins. To blink LEDs independently, each LED would typically
         require one pin, so in theory, the Arduino could blink up to 14. However, that depends on
-        whether or not it could handle the sum of currents drawn from each resistor/LED pair. For this
-        assignment, the sum of currents could be up to 280mA, equal to 20mA times 14.
+        whether or not it could handle the sum of currents drawn from each resistor/LED pair. For the
+        circuit in this assignment, the sum of currents could be up to 280mA, equal to 20mA times 14.
       </p>
       <p>
         3. Based on visual observation, a range of 10-12ms is where the LEDs appear to no longer be
