@@ -100,18 +100,17 @@
     <h2>Additional Questions</h2>
     <div class="questions">
       <p>
-        1. The analogWrite function takes two parameters: a pin and a duty cycle value that ranges
-        from 0 to 255. When set to 255, the Arduino provides 5V of power 100% of the time, resulting
-        in a constant voltage of ~5V across an LED. However, with a duty cycle of 128, the Arduino
-        supplies 5V of power only 50% of the time, causing the average voltage across an LED to drop
-        to ~2.5V. This same principle applies when the duty cycle is set to 64, where 5V of power is
-        supplied only 25% of the time, leading to an average voltage of ~1.25V across an LED. In
-        reality, average voltage across an LED may also be affected by its specific voltage drop.
+        1. The analogWrite function takes two parameters: a pin and a duty cycle value rangeing from
+        to 255. When set to 255, the Arduino provides 5V of power 100% of the time, resulting in a
+        constant voltage of approximately 5V across an LED. However, with a duty cycle of 128, the
+        Arduino supplies 5V of power only 50% of the time. Similarly, when the duty cycle is set to
+        64, the LED receives 5V of power only 25% of the time.
       </p>
-      <p>This graph depicts average voltage over time.</p>
+      <p>
+        These charts depict voltage over time (in seconds) across an LED for the cases listed above.
+        The official Arduino documentation gives 490hz as the frequency of PWM pins.
+      </p>
       <img src="A2-Q1.jpg" />
-      <p>This graph depicts voltage over two PWM cycles.</p>
-      <img src="A2-Q1-2.jpg" />
       <p>
         2. To answer this question, I started by calculating the current drawn by each LED. Each
         220Ω resistor/red LED pair draws 14.5mA, given 5V of power and a voltage drop of 1.8V. While
