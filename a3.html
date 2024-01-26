@@ -159,7 +159,14 @@
       </p>
       <img src="A3-Q2.jpg" />
       <p>
-        3. For an 8-bit PWM and 10-bit analog-to-digital converter, my map()
+        3. I just have to make sure that I match the min and max values with the
+        new PWM and converter ranges. If the syntax for the map function is
+        map(value, fromLow, fromHigh, toLow, toHigh), then fromLow and fromHigh
+        correspond to the min and max values for the 16-bit converter, and
+        toLow and toHigh correspond to the min and max values for the 10-bit PWM.
+      </p>
+      <p>
+        For an 8-bit PWM and 10-bit analog-to-digital converter, my map()
         code would look like:
         <pre>
           <code>
@@ -173,11 +180,6 @@
             sensorValue = map(sensorValue, 0, 65535, 0, 1023);
           </code>
         </pre>
-        I just have to make sure that I match the min and max values with the
-        new PWM and converter ranges. If the syntax for the map function is
-        map(value, fromLow, fromHigh, toLow, toHigh), then fromLow and fromHigh
-        correspond to the min and max values for the 16-bit converter, and
-        toLow and toHigh correspond to the min and max values for the 10-bit PWM.
       </p>
     </div>
   </body>
