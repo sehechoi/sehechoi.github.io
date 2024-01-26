@@ -14,18 +14,21 @@
     <div class="document">
       <img src="A3-Schematic.jpg" />
       <p>
-        The circuit schematic shows a voltage divider circuit composed of one photoresistor and one
-        10kΩ resistor. The output voltage of the circuit is measured using analog pin 0. The
-        schematic also includes two red LED/220Ω resistor pairs. One of the LEDs is connected to PWM
-        pin 9, which allows it to fade on and off, while the other is connected to digital pin 8. To
-        the right of the schematic are the calculations used to estimate the range of output
-        voltages produced by the voltage divider. Using the dark and light resistance values
-        provided by the datasheet for the photoresistor, I checked that the 10kΩ resistor was
-        suitable for use with the photoresistor, meaning that it would result in visible differences
-        in light intensity. For the 220Ω resistors, given 5V of power, a desired current of 20mA or
-        less, and a voltage drop of 1.8v across a single LED, I calculated that a resistance of 160Ω
-        or greater would be appropriate. 220Ω resistors were selected only because they were the
-        most readily available.
+        The circuit schematic shows a voltage divider circuit connected to analog pin 0 that is
+        composed of one photoresistor and one 10kΩ resistor. The schematic also includes two red
+        LED/220Ω resistor pairs. One of the LEDs is connected to PWM pin 9, which allows it to fade,
+        while the other is connected to digital pin 8. To the right of the schematic are the
+        calculations used to estimate the range of output voltages produced by the voltage divider.
+        Using the dark and light resistance values provided by the datasheet for the photoresistor,
+        I checked that the 10kΩ resistor was suitable for use with the photoresistor, meaning that
+        it would result in visible differences in light intensity.
+      </p>
+    </div>
+    <div class="document">
+      <p>
+        For the 220Ω resistors, given 5V of power, a desired current of 20mA or less, and a voltage
+        drop of 1.8V across a single LED, I calculated that a resistance of 160Ω or greater would be
+        appropriate. 220Ω resistors were selected only because they were the most readily available.
       </p>
     </div>
 
