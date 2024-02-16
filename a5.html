@@ -27,7 +27,7 @@
         The circuit is split into an LED component and an IR remote/receiver component. The IR
         component is powered by the 5V pin on the Arduino and uses digital pin 2 for sensor output.
         The LED component is powered by the AC adapter and requires a n-MOSFET, connected to digital
-        pin 12, to control current flow. The Arduino has a current limitation of 200mA and the LED
+        pin 11, to control current flow. The Arduino has a current limitation of 200mA and the LED
         strip (with 300 LEDs) draws 1.5A at 12V, so a transistor must be used to prevent damage to
         any of the parts. The n-MOSFET (part FQP30N06L) used in the circuit can handle up to 32A at
         a case temperature of +25°C.
@@ -45,7 +45,7 @@
           #define IR_BUTTON_0 12   // Set the value of button 0 to 12
           #define IR_BUTTON_1 16   // Set the value of button 1 to 16
 
-          const int LED_PIN = 12;  // Define digital pin 12 as LED pin
+          const int LED_PIN = 11;  // Define digital/PWM pin 11 as LED pin
 
           void setup() {
             Serial.begin(9600); // Begin serial communications
@@ -61,12 +61,12 @@
               switch (command) {  // Check which button was pressed
                 case IR_BUTTON_0: { // If button 0 was pressed...
                   Serial.println("Pressed on button 0");  // Print to serial monitor
-                  digitalWrite(LED_PIN, LOW); // Set LED pin to low (turn off LEDs)
+                  analogWrite(LED_PIN, 0); // Set LED pin to low (turn off LEDs)
                   break;  // Move on to next case
                 }
                 case IR_BUTTON_1: { // If button 1 was pressed...
                   Serial.println("Pressed on button 1"); // Print to serial monitor
-                  digitalWrite(LED_PIN, HIGH); // Set LED pin to high (turn off LEDs)
+                  analogWrite(LED_PIN, 255); // Set LED pin to high (turn off LEDs)
                   break; // Move on to next case
                 }
                 default: {  // If anything else is pressed...
