@@ -42,8 +42,8 @@
           #include <IRremote.h> // IRremote library V.4.
 
           #define IR_RECEIVE_PIN 2 // Set digital pin 2 to IR pin
-          #define IR_BUTTON_0 12   // Set the value of button 0 to 12
-          #define IR_BUTTON_1 16   // Set the value of button 1 to 16
+          #define IR_BUTTON_0 22   // Set the value of button 0 to 12
+          #define IR_BUTTON_1 12   // Set the value of button 1 to 16
 
           const int LED_PIN = 11;  // Define digital/PWM pin 11 as LED pin
 
@@ -73,6 +73,23 @@
                   // do nothing
                 }
               }
+            }
+          }
+
+          // CODE USED TO CHECK BUTTON VALUES
+          #include <IRremote.h> // IRremote library V.4.
+
+          #define IR_RECEIVE_PIN 2  // Set digital pin 2 to IR pin
+
+          void setup() {
+            Serial.begin(9600); // Begin serial communications
+            IrReceiver.begin(IR_RECEIVE_PIN); // Initialize IRreceiver at IR pin
+          }
+
+          void loop() {
+            if (IrReceiver.decode()) {  // Check for completely received IR frame
+              IrReceiver.resume();  // Resume the sensor
+              Serial.println(IrReceiver.decodedIRData.command); Print button data to serial monitor
             }
           }
         </code>
