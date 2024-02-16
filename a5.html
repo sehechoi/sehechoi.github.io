@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+    <title>Sehe Choi's HCDE 439 Physical Computing Page!</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Sehe Choi's Assignment 5: High(er) voltage and transistors!</h1>
+    <h2>Schematic</h2>
+    <div class="document">
+      <img src="A5-Schematic.jpg" />
+      <p>
+        The circuit schematic illustrates each of the connections from an LED strip, IR receiver,
+        and n-MOSFET to their respective Arduino pins. It also includes an AC adapter (AD), which
+        serves as an external power supply for the Arduino. The adapter has input: AC 110-245V and
+        output: DC 12V/2A.
+      </p>
+    </div>
+
+    <h2>Circuit</h2>
+    <div class="document">
+      <p>
+        The circuit is split into an LED component and an IR remote/receiver component. The IR
+        component is powered by the 5V pin on the Arduino and uses digital pin 2 for sensor output.
+        The LED component is powered by the AC adapter and requires a n-MOSFET, connected to digital
+        pin 12, to control current flow.
+      </p>
+      <img src="A5-Circuit.jpeg" />
+    </div>
+
+    <h2>Firmware</h2>
+    <div class="document">
+      <pre>
+        <code>
+          #include <IRremote.h> // IRremote library V.4.
+
+          #define IR_RECEIVE_PIN 2 // Set digital pin 2 to IR pin
+          #define IR_BUTTON_0 12   // Set the value of button 0 to 12
+          #define IR_BUTTON_1 16   // Set the value of button 1 to 16
+
+          const int LED_PIN = 12;  // Define digital pin 12 as LED pin
+
+          void setup() {
+            Serial.begin(9600); // Begin serial communications
+            IrReceiver.begin(IR_RECEIVE_PIN); // Initialize IR receiver at IR pin
+
+            pinMode(LED_PIN, OUTPUT); // Set LED pin mode to output
+          }
+
+          void loop() {
+            if (IrReceiver.decode()) {  // Check for completely received IR frame
+              IrReceiver.resume();  // Resume the sensor
+              int command = IrReceiver.decodedIRData.command; // Retrieve button data
+              switch (command) {  // Check which button was pressed
+                case IR_BUTTON_0: { // If button 0 was pressed...
+                  Serial.println("Pressed on button 0");  // Print to serial monitor
+                  digitalWrite(LED_PIN, LOW); // Set LED pin to low (turn off LEDs)
+                  break;  // Move on to next case
+                }
+                case IR_BUTTON_1: { // If button 1 was pressed...
+                  Serial.println("Pressed on button 1"); // Print to serial monitor
+                  digitalWrite(LED_PIN, HIGH); // Set LED pin to high (turn off LEDs)
+                  break; // Move on to next case
+                }
+                default: {  // If anything else is pressed...
+                  // do nothing
+                }
+              }
+            }
+          }
+        </code>
+      </pre>
+    </div>
+
+    <h2>Operation</h2>
+    <div class="document">
+      <img src="A5-GIF.GIF" />
+      <p>
+        The circuit operates by reading the button pressed on the IR remote and
+        turning the LEDs on if the button pressed was 1 or off if the button
+        pressed was 0. Pressing the other buttons will do nothing.
+      </p>
+    </div>
+
+    <h2>Additional Questions</h2>
+    <div class="questions">
+      <p>
+        1. According to the data sheet, the maximum continous drain current
+        (i.e., the maximum amount of current that can be safely passed through
+        the drain terminal of a MOSFET without damaging it) is 37.2A at a case
+        temperature of +25°C. Therefore, the absolute maximum amount of current
+        between pins 2 and 3, drain and source respectively, is 37.2A.
+      </p>
+      <p>
+        2. Below is the schematic for a circuit that uses an Arduino, DC motor,
+        flyback diode, capacitor, n-MOSFET, and 9V battery (BAT). The part
+        numbers for each component are as follows: DC motor—ADA711,
+        diode—1N4001, capacitor—ADA2193, and n-MOSFET—DMT6009LCT.
+      </p>
+      <img src="A5-Q2.jpg" />
+      <p>
+        3. Below is the schematic for a circuit using an Arduino (ARD), L293D
+        chip, 9V battery (BAT), and two DC motors. Also included is code to move
+        the motors both forwards, both back, one forward and one back, and one
+        back and one forward.
+      </p>
+      <img src="A5-Q3.jpg" />
+      <pre>
+        <code>
+          void setup() {
+            pinMode(12, OUTPUT);
+            pinMode(11, OUTPUT);
+            pinMode(10, OUTPUT);
+            pinMode(9, OUTPUT);
+          }
+
+          void loop() {
+            digitalWrite(12, HIGH);
+            digitalWrite(11, LOW);
+            digitalWrite(10, HIGH);
+            digitalWrite(9, LOW);
+            delay(2000);
+            digitalWrite(12, LOW);
+            digitalWrite(11, HIGH);
+            digitalWrite(10, LOW);
+            digitalWrite(9, HIGH);
+            delay(2000);
+            digitalWrite(12, HIGH);
+            digitalWrite(11, LOW);
+            delay(2000);
+            digitalWrite(12, LOW);
+            digitalWrite(11, HIGH);
+            digitalWrite(10, HIGH);
+            digitalWrite(9, LOW);
+            delay(2000);
+          }
+        </code>
+      </pre>
+    </div>
+  </body>
+</html>
