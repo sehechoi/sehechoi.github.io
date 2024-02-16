@@ -27,7 +27,10 @@
         The circuit is split into an LED component and an IR remote/receiver component. The IR
         component is powered by the 5V pin on the Arduino and uses digital pin 2 for sensor output.
         The LED component is powered by the AC adapter and requires a n-MOSFET, connected to digital
-        pin 12, to control current flow.
+        pin 12, to control current flow. The Arduino has a current limitation of 200mA and the LED
+        strip (with 300 LEDs) draws 1.5A at 12V, so a transistor must be used to prevent damage to
+        any of the parts. The n-MOSFET (part FQP30N06L) used in the circuit can handle up to 32A at
+        a case temperature of +25°C.
       </p>
       <img src="A5-Circuit.jpeg" />
     </div>
