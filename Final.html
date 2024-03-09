@@ -275,7 +275,7 @@
         of circles, (3) adjust the potentiometer connected to pin A1 to change the radius of the
         outer circle along with the volume of the background music, (4) press the mouse to reverse
         the rotation of the circles and turn off the clear function. Method 1 is represented in the
-        GIF. See the demo video for representations of all other methods.
+        GIF. See the demo video for representations of the other methods.
       </p>
     </div>
 
@@ -289,10 +289,11 @@
       <p>
         Readings from my ultrasonic sensor would spike randomly, preventing the visuals from
         displaying properly. To address this issue, I had to constrain the duration variable in my
-        firmware to a range of 0-1000. If I could improve anything about my project, it would be to
-        develop a more robust method of processing the sensor data and stabilizing the readings.
-        Hopefully, this would help reduce delays in function execution and make everything more
-        responsive.
+        firmware to a range of 0-1000. Originally, I prevented the readings array from updating if
+        duration was greater than 1000, but I found that this approach resulted in slower response
+        times. If I could improve anything about my project, it would be to develop a more robust
+        method of processing the sensor data and stabilizing the readings. Hopefully, this would
+        help reduce delays in function execution and make everything more responsive.
       </p>
     </div>
   </body>
